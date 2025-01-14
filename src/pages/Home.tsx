@@ -1,11 +1,9 @@
 import {Box, Card, CardContent, CardMedia} from "@mui/material";
 import {Hero} from "../components/Hero.tsx";
 import {SearchBar} from "../components/SearchBar.tsx";
-import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
 export const Home = () => {
-    const [input, setInput] = useState("");
     const navigate = useNavigate();
 
     const handleSearch = (searchInput: string) => {
@@ -41,7 +39,7 @@ export const Home = () => {
                     <Hero />
                 </CardMedia>
                 <CardContent>
-                    <SearchBar input={input} setInput={setInput} onSearch={handleSearch} />
+                    <SearchBar onSearch={handleSearch} />
                 </CardContent>
             </Card>
         </Box>

@@ -1,12 +1,15 @@
 import { Box, TextField, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import {ChangeEvent, useState} from "react";
 
-export const SearchBar = ({ input, setInput, onSearch }) => {
-    const handleInput = (e) => {
+export const SearchBar = ({ onSearch }: { onSearch: (searchInput: string) => void,  }) => {
+    const [input, setInput] = useState("");
+
+    const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
         setInput(e.target.value.toLowerCase());
     };
 
-    const handleKeyPress = (e) => {
+    const handleKeyPress = (e: React.KeyboardEvent) => {
         if (e.key === "Enter") {
             onSearch(input);
         }

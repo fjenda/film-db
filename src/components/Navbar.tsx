@@ -24,7 +24,7 @@ export const Navbar = ({ navLinks }: { navLinks: NavbarLink[] }) => {
     const theme = useTheme();
     const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
 
-    const toggleDrawer = (open) => () => {
+    const toggleDrawer = (open: boolean) => () => {
         setIsDrawerOpen(open);
     };
 
@@ -107,7 +107,6 @@ export const Navbar = ({ navLinks }: { navLinks: NavbarLink[] }) => {
                 <List>
                     {navLinks.map((link) => (
                         <ListItem
-                            button={"true"}
                             key={link.text}
                             onClick={toggleDrawer(false)}
                         >

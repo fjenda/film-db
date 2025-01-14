@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
 import {Box, Card, CardContent, CardMedia, Grid2} from "@mui/material";
+import {ImageThemed} from "./ImageThemed.tsx";
+import Logo from "../assets/logo.svg";
 
-interface MovieData {
+export interface MovieData {
     Poster: string,
     Title: string,
     Type: string,
@@ -9,12 +10,11 @@ interface MovieData {
     imdbID: string,
 }
 
-export const MovieList = ({ list }: []) =>  {
-    const [movieData, setMovieData] = useState<MovieData[]>([]);
-    useEffect(() => {
-        setMovieData(list);
-    }, [list]);
+interface MovieListProps {
+    list: MovieData[],
+}
 
+export const MovieList = ({ list }: MovieListProps) =>  {
     return (
         <Box
             sx={{
@@ -26,8 +26,8 @@ export const MovieList = ({ list }: []) =>  {
             }}
         >
             <Grid2 container rowSpacing={{ xs: 1, sm: 2, md: 3 }} columnSpacing={{ xs: 1, sm: 2, md: 3}}>
-                    {movieData && movieData.length > 0 ? (
-                        movieData.map((movie: MovieData) => (
+                    {list && list.length > 0 ? (
+                        list.map((movie: MovieData) => (
                             <Grid2 size={3} key={movie.imdbID}>
                                 <Card
                                     variant={"outlined"}
@@ -58,7 +58,11 @@ export const MovieList = ({ list }: []) =>  {
                                 >
                                     <CardMedia>
                                         <a href={`https://www.imdb.com/title/${movie.imdbID}`} target="_blank" rel="noreferrer" key={movie.imdbID}>
-                                            <Box component={"img"} src={movie.Poster} alt={movie.Title} sx={{ maxHeight: "300px", borderRadius: "0.25rem" }} />
+                                            {movie.Poster === "N/A" ? (
+                                                <ImageThemed src={Logo} alt={movie.Title} theme={"auto"} />
+                                            ) : (
+                                                <Box component={"img"} src={movie.Poster} alt={movie.Title} sx={{ maxHeight: "300px", borderRadius: "0.25rem" }} />
+                                            )}
                                         </a>
                                     </CardMedia>
                                     <CardContent>

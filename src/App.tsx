@@ -5,8 +5,6 @@ import {Home} from "./pages/Home.tsx";
 import {About} from "./pages/About.tsx";
 import {Search} from "./pages/Search.tsx";
 
-
-
 export const App = () => {
     return (
         <BrowserRouter>
