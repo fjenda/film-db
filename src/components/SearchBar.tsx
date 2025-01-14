@@ -1,6 +1,5 @@
 import { Box, TextField, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import "../styles/SearchBar.css";
 
 export const SearchBar = ({ input, setInput, onSearch }) => {
     const handleInput = (e) => {
@@ -9,12 +8,20 @@ export const SearchBar = ({ input, setInput, onSearch }) => {
 
     const handleKeyPress = (e) => {
         if (e.key === "Enter") {
-            onSearch();
+            onSearch(input);
         }
     };
 
     return (
-        <Box className="search-bar-container">
+        <Box
+            sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+                margin: "1rem 0",
+            }}
+        >
             <TextField
                 id="search"
                 label="Search"
@@ -33,6 +40,31 @@ export const SearchBar = ({ input, setInput, onSearch }) => {
                         ),
                     },
 
+                }}
+                sx={{
+                    width: "100%",
+                    maxWidth: "400px",
+                    backgroundColor: "#f5f5f5",
+                    borderRadius: "0.5rem",
+                    "& .MuiInputAdornment-root": {
+                        color: "#888",
+                    },
+                    "& .MuiOutlinedInput-root.Mui-focused": {
+                        borderColor: "#3f51b5",
+                        boxShadow: "0 0 4px rgba(63, 81, 181, 0.5)",
+                    },
+                    "& .MuiInputLabel-root.Mui-focus": {
+                        display: "none",
+                    },
+                    "& label.Mui-focused": {
+                        color: "#101820",
+                    },
+                    "@media screen and (prefers-color-scheme: dark)": {
+                        "& label.Mui-focused": {
+                            color: "#f4f9ff",
+                            backgroundColor: "#152535",
+                        }
+                    }
                 }}
                 aria-label="Search"
             />

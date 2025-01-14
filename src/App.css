@@ -61,19 +61,9 @@ body {
     align-items: center;
 }
 
-.MuiCard-root.main-card {
-    border-radius: 0.5rem;
-    padding: 2rem 4rem;
-}
-
 @media screen and (prefers-color-scheme: dark) {
     body {
         background-color: #101820;
-        color: #f4f9ff;
-    }
-
-    .MuiCard-root.main-card {
-        background-color: #152535;
         color: #f4f9ff;
     }
 }
