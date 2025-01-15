@@ -10,6 +10,9 @@ and the [OMDb API](http://www.omdbapi.com) for fetching movie data.
 - **Responsive Design:** The app is fully responsive, ensuring a great user experience on both desktop and mobile devices.
 - **Navigation:** Seamless routing between pages using React Router.
 
+## Demo
+![FilmDB Demo](img/demo.gif)
+
 ## Installation
 1. **Clone the repository**
 2. **Install dependencies:**
