@@ -1,11 +1,18 @@
 import {MovieData, MovieList} from "../components/MovieList.tsx";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import {SearchBar} from "../components/SearchBar.tsx";
+import {useNavigate} from "react-router-dom";
 
 export const Search = () => {
     const [list, setList] = useState<MovieData[]>([]);
     const [searchParams] = useSearchParams();
     const query = searchParams.get("query");
+    const navigate = useNavigate();
+
+    const handleSearch = (searchInput: string) => {
+        navigate(`/search?query=${encodeURIComponent(searchInput)}`);
+    }
 
     useEffect(() => {
         if (query) {
@@ -21,6 +28,9 @@ export const Search = () => {
     }, [query]);
 
     return (
-        <MovieList list={list} />
+        <>
+            <SearchBar onSearch={handleSearch} type={"wide"} />
+            <MovieList list={list} />
+        </>
     );
 }

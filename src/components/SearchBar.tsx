@@ -2,14 +2,19 @@ import { Box, TextField, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import {ChangeEvent, useState} from "react";
 
-export const SearchBar = ({ onSearch }: { onSearch: (searchInput: string) => void,  }) => {
+interface SearchBarProps {
+    type?: "normal" | "wide",
+    onSearch: (searchInput: string) => void,
+}
+
+export const SearchBar = ({ type = "normal", onSearch }: SearchBarProps) => {
     const [input, setInput] = useState("");
 
     const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
         setInput(e.target.value.toLowerCase());
     };
 
-    const handleKeyPress = (e: React.KeyboardEvent) => {
+    const handleKeyDown = (e: React.KeyboardEvent) => {
         if (e.key === "Enter") {
             onSearch(input);
         }
@@ -22,7 +27,12 @@ export const SearchBar = ({ onSearch }: { onSearch: (searchInput: string) => voi
                 justifyContent: "center",
                 alignItems: "center",
                 width: "100%",
-                margin: "1rem 0",
+                marginTop: type === "wide" ? "2rem" : "1rem",
+                padding: {
+                    xs: "0.5rem 1rem",
+                    sm: "1rem 2rem",
+                    md: "2rem 4rem",
+                }
             }}
         >
             <TextField
@@ -30,7 +40,7 @@ export const SearchBar = ({ onSearch }: { onSearch: (searchInput: string) => voi
                 label="Search"
                 variant="outlined"
                 onChange={handleInput}
-                onKeyPress={handleKeyPress}
+                onKeyDown={handleKeyDown}
                 value={input}
                 className="search-bar"
                 placeholder="Type to search..."
@@ -46,7 +56,7 @@ export const SearchBar = ({ onSearch }: { onSearch: (searchInput: string) => voi
                 }}
                 sx={{
                     width: "100%",
-                    maxWidth: "400px",
+                    maxWidth: type === "wide" ? "35rem" : "25rem",
                     backgroundColor: "#f5f5f5",
                     borderRadius: "0.5rem",
                     "& .MuiInputAdornment-root": {
@@ -66,6 +76,8 @@ export const SearchBar = ({ onSearch }: { onSearch: (searchInput: string) => voi
                         "& label.Mui-focused": {
                             color: "#f4f9ff",
                             backgroundColor: "#152535",
+                            padding: "0 0.5rem",
+                            borderRadius: "0.25rem",
                         }
                     }
                 }}

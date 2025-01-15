@@ -9,7 +9,7 @@ import {
     List,
     ListItem,
     useTheme,
-    useMediaQuery, Box,
+    useMediaQuery,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import {Link} from "react-router-dom";
@@ -57,36 +57,34 @@ export const Navbar = ({ navLinks }: { navLinks: NavbarLink[] }) => {
                             },
                         }}
                     >
-                        <Box
-                            component={Link}
+                        <Link
                             to={"/"}
-                            sx={{
+                            style={{
                                 textDecoration: "none",
-                                color: "inherit",
+                                color: "inherit"
                             }}
                         >
                             FilmDB
-                        </Box>
-
+                        </Link>
                     </Typography>
 
                     {isDesktop ? (
                         <div>
                             {navLinks.map((link) => (
-                                <Button key={link.text} color="inherit">
-                                    <Box
-                                        component={Link}
-                                        to={link.link}
-                                        sx={{
-                                            textDecoration: "none",
-                                            color: "#152535",
-                                            "@media screen and (prefers-color-scheme: dark)": {
-                                                color: "#f4f9ff",
-                                            },
-                                        }}
-                                    >
-                                        {link.text}
-                                    </Box>
+                                <Button
+                                    key={link.text}
+                                    component={Link as React.ElementType}
+                                    to={link.link}
+                                    color="inherit"
+                                    sx={{
+                                        textDecoration: "none",
+                                        color: "#152535",
+                                        "@media screen and (prefers-color-scheme: dark)": {
+                                            color: "#f4f9ff",
+                                        },
+                                    }}
+                                >
+                                    {link.text}
                                 </Button>
                             ))}
                         </div>
@@ -109,17 +107,14 @@ export const Navbar = ({ navLinks }: { navLinks: NavbarLink[] }) => {
                         <ListItem
                             key={link.text}
                             onClick={toggleDrawer(false)}
+                            component={Link as React.ElementType}
+                            to={link.link}
+                            sx={{
+                                textDecoration: "none",
+                                color: "inherit",
+                            }}
                         >
-                            <Box
-                                component={Link}
-                                to={link.link}
-                                sx={{
-                                    textDecoration: "none",
-                                    color: "inherit",
-                                }}
-                            >
-                                {link.text}
-                            </Box>
+                            {link.text}
                         </ListItem>
                     ))}
                 </List>

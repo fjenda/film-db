@@ -4,6 +4,7 @@ import {Layout} from "./pages/Layout.tsx";
 import {Home} from "./pages/Home.tsx";
 import {About} from "./pages/About.tsx";
 import {Search} from "./pages/Search.tsx";
+import {Detail} from "./pages/Detail.tsx";
 
 export const App = () => {
     return (
@@ -13,6 +14,7 @@ export const App = () => {
                     <Route index element={<Home />} />
                     <Route path={"about"} element={<About />} />
                     <Route path={"search"} element={<Search />} />
+                    <Route path={"detail"} element={<Detail />} />
                 </Route>
             </Routes>
         </BrowserRouter>
