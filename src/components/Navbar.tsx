@@ -35,7 +35,7 @@ export const Navbar = ({ navLinks }: { navLinks: NavbarLink[] }) => {
                 sx={{
                     top: "0",
                     left: "0",
-                    backgroundColor: "#f4f9ff",
+                    backgroundColor: "#ffffff",
                     "@media screen and (prefers-color-scheme: dark)": {
                         backgroundColor: "#152535",
                     },

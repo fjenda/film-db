@@ -60,6 +60,16 @@ export const MovieDetail = ({ movie }: MovieDetailProps) => {
                     <CardMedia
                         sx={{
                             borderRadius: "0.5rem",
+                            width: {
+                                xs: "100%",
+                                sm: "50%",
+                            },
+                            height: {
+                                xs: "100%",
+                                sm: "auto",
+                            },
+                            display: "flex",
+                            alignItems: "center",
                         }}
                     >
                         {movie.Poster === "N/A" ? (
